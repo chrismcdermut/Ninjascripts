@@ -33,6 +33,9 @@ namespace NinjaTrader.NinjaScript.Strategies
 		//private NinjaTrader.NinjaScript.Indicators.Sim22.Sim22_DeltaV3 Sim22_DeltaV31;
 		//private NinjaTrader.NinjaScript.Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
 		private Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
+		private string ntStockData;
+		private string auroraStockData;
+		private string fullPrintOut;
 		protected override void OnStateChange()
 		{
 			Print(string.Format("ONSTATECHANGE RUNNING1"));
@@ -98,32 +101,27 @@ namespace NinjaTrader.NinjaScript.Strategies
 		protected override void OnBarUpdate()
 		{
 			Print(string.Format("ONBARUPDATE RUNNING BEFORE GUARD"));
-			if (BarsInProgress != 0) 
+			if (BarsInProgress != 0 || CurrentBar < BarsRequiredToTrade) 
 				return;
-			if (CurrentBar < BarsRequiredToTrade)
-			    return;
-//			Print(string.Format("CurrentBar"));
-//			Print(CurrentBar);
-			Print(string.Format("ONBARUPDATE RUNNING"));
-//			Print(string.Format("CurrentBar"));
-//			Print(CurrentBar);
 			
-			Print(string.Format("indiTachAur.BarsToNextSignal[0].ToString"));
+			//can prolly get rid of this
+			Print(string.Format("indiTachAur.BarsToNextSignal.ToString"));
 			Print(indiTachAur.BarsToNextSignal.ToString());
 			
-			sw = File.AppendText(path);  // Open the path for writing
-			
-			//sw.WriteLine(Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0]); // Append a new line to the file
+			//			Print(string.Format("CurrentBar"));
+			//			Print(CurrentBar);
 			Print(string.Format("1ONBARUPDATE BEFORE PRINT indiTachAur.BarsToNextSignal.Count"));
 			Print(indiTachAur.BarsToNextSignal.Count);
 			Print(string.Format("1ONBARUPDATE BEFORE PRINT indiTachAur.BarsToNextSignal.GetValueAt(CurrenBar)"));
 			Print(indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar));
 
-			Print(string.Format("ONBARUPDATE AFTER PRINT indiTachAur B4 DBOX and SW"));
-			Print(string.Format(Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0] + "," + indiTachAur.TrendPlot.GetValueAt(CurrentBar) + "," + indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(CurrentBar) + "," + indiTachAur.SignalPattern.GetValueAt(CurrentBar) + "," + indiTachAur.BuySignalStopLine.GetValueAt(CurrentBar)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(CurrentBar) + "," + indiTachAur.DotPrice.GetValueAt(CurrentBar) + "," + indiTachAur.OpenPrice.GetValueAt(CurrentBar)));
-			sw.WriteLine(Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0] + "," + indiTachAur.TrendPlot.GetValueAt(CurrentBar) + "," + indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(CurrentBar) + "," + indiTachAur.SignalPattern.GetValueAt(CurrentBar) + "," + indiTachAur.BuySignalStopLine.GetValueAt(CurrentBar)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(CurrentBar) + "," + indiTachAur.DotPrice.GetValueAt(CurrentBar) + "," + indiTachAur.OpenPrice.GetValueAt(CurrentBar)); // Append a new line to the file
-			Print(string.Format("ONBARUPDATE AFTER WRITELINE"));
-			
+			ntStockData = Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
+			auroraStockData = indiTachAur.TrendPlot.GetValueAt(CurrentBar) + "," + indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(CurrentBar) + "," + indiTachAur.SignalPattern.GetValueAt(CurrentBar) + "," + indiTachAur.BuySignalStopLine.GetValueAt(CurrentBar)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(CurrentBar) + "," + indiTachAur.DotPrice.GetValueAt(CurrentBar) + "," + indiTachAur.OpenPrice.GetValueAt(CurrentBar);
+			fullPrintOut = ntStockData + "," + auroraStockData;
+
+			sw = File.AppendText(path);  // Open the path for writing
+			Print(string.Format(fullPrintOut));
+			sw.WriteLine(fullPrintOut); // Append a new line to the file		
 			sw.Close(); // Close the file to allow future calls to access the file again.
 		}
 	}
