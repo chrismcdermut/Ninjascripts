@@ -28,7 +28,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 {
 	public class AuroraBacktestUnlocked : Strategy
 	{
-		private string pathTXT;
 		private string pathCSV;
 		private StreamWriter sw; // a variable for the StreamWriter that will be used 
 		private Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
@@ -49,7 +48,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 				Print(string.Format("STATE.SETDEFAULTS"));
 				Description									= @"AuroraBacktest";
 				Name										= "AuroraBacktestUnlocked";
-				barType                                     = "ThreeMinute";
+				barType                                     = "UndefMinuteBar";
 				Calculate									= Calculate.OnBarClose;
 				EntriesPerDirection							= 1;
 				EntryHandling								= EntryHandling.AllEntries;
@@ -60,7 +59,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 				localDate                                   = DateTime.Now;
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
-                pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir + localDate.ToString("yyyyMMddHH") + barType + "outputs.txt"; // Define the Path to our test file can add/remove localDate.ToString("yyyyMMddHH") from middle
 				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir + localDate.ToString("yyyyMMddHH") + barType + "outputs.csv"; // Define the Path to our test file can add/remove localDate.ToString("yyyyMMddHH") from middle
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.ImmediatelySubmit;
@@ -165,10 +163,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 			Print(string.Format(fullPrintOut));	
 
 			sw = File.AppendText(pathCSV);  // Open the path for writing
-			sw.WriteLine(fullPrintOut); // Append a new line to the file		
-			sw.Close(); // Close the file to allow future calls to access the file again.
-
-			sw = File.AppendText(pathTXT);  // Open the path for writing
 			sw.WriteLine(fullPrintOut); // Append a new line to the file		
 			sw.Close(); // Close the file to allow future calls to access the file again.            
 		}
