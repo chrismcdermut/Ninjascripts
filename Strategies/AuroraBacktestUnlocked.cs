@@ -38,6 +38,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string labels;
 		private int dataIndex;
 		private DateTime localDate;
+		private string barType;
 		protected override void OnStateChange()
 		
 		{
@@ -48,6 +49,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 				Print(string.Format("STATE.SETDEFAULTS"));
 				Description									= @"AuroraBacktest";
 				Name										= "AuroraBacktestUnlocked";
+				barType                                     = "ThreeMinute";
 				Calculate									= Calculate.OnBarClose;
 				EntriesPerDirection							= 1;
 				EntryHandling								= EntryHandling.AllEntries;
@@ -56,19 +58,17 @@ namespace NinjaTrader.NinjaScript.Strategies
 				IsFillLimitOnTouch							= false;
 				labels                                      = "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 				localDate                                   = DateTime.Now;
-				MaximumBarsLookBack							= MaximumBarsLookBack.TwoHundredFiftySix;
+				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
-				// pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir + "stratOutputs.txt"; // Define the Path to our test file
-				// pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir + "stratOutputs.csv"; // Define the Path to our test file
-                pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString("yyyyMMddHH")+ "stratOutputs.txt"; // Define the Path to our test file
-				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString("yyyyMMddHH")+ "stratOutputs.csv"; // Define the Path to our test file
+                pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir + localDate.ToString("yyyyMMddHH") + barType + "outputs.txt"; // Define the Path to our test file can add/remove localDate.ToString("yyyyMMddHH") from middle
+				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir + localDate.ToString("yyyyMMddHH") + barType + "outputs.csv"; // Define the Path to our test file can add/remove localDate.ToString("yyyyMMddHH") from middle
 				Slippage									= 0;
-				StartBehavior								= StartBehavior.WaitUntilFlat;
+				StartBehavior								= StartBehavior.ImmediatelySubmit;
 				TimeInForce									= TimeInForce.Gtc;
 				TraceOrders									= false;
 				RealtimeErrorHandling						= RealtimeErrorHandling.StopCancelClose;
 				StopTargetHandling							= StopTargetHandling.PerEntryExecution;
-				BarsRequiredToTrade							= 20;
+				BarsRequiredToTrade							= 2;
 				IsInstantiatedOnEachOptimizationIteration	= true;
 			}
 			else if (State == State.Configure)
@@ -106,6 +106,8 @@ namespace NinjaTrader.NinjaScript.Strategies
 			Print(string.Format("ONBARUPDATE RUNNING BEFORE GUARD"));
 			if (BarsInProgress != 0 || CurrentBar < BarsRequiredToTrade) 
 				return;
+
+/////////////Debugging/////////////
 
 			 Print(string.Format("CurrentBar"));
 			 Print(CurrentBar);
@@ -149,17 +151,18 @@ namespace NinjaTrader.NinjaScript.Strategies
 			 Print(indiTachAur.OpenPrice.ToString());
 			 Print(string.Format("indiTachAur.OpenPrice.Count"));
 			 Print(indiTachAur.OpenPrice.Count);
-			
-			
+				
 			Print(string.Format("1ONBARUPDATE BEFORE PRINT indiTachAur.BarsToNextSignal.GetValueAt(CurrenBar)"));
 			Print(indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar));
+
+////////////Printing area////////////
 
 			dataIndex = CurrentBar;
 			ntStockData = CurrentBar + "," + Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
 			auroraStockData = indiTachAur.TrendPlot.GetValueAt(dataIndex) + "," + indiTachAur.BarsToNextSignal.GetValueAt(dataIndex) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex) + "," + indiTachAur.SignalPattern.GetValueAt(dataIndex) + "," + indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(dataIndex) + "," + indiTachAur.DotPrice.GetValueAt(dataIndex) + "," + indiTachAur.OpenPrice.GetValueAt(dataIndex);
 			fullPrintOut = ntStockData + "," + auroraStockData;
 
-			Print(string.Format(fullPrintOut));			
+			Print(string.Format(fullPrintOut));	
 
 			sw = File.AppendText(pathCSV);  // Open the path for writing
 			sw.WriteLine(fullPrintOut); // Append a new line to the file		
