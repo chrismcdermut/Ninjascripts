@@ -41,7 +41,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		protected override void OnStateChange()
 		
 		{
-			Print(string.Format("ONSTATECHANGE RUNNING2"));
+			Print(string.Format("ONSTATECHANGE RUNNING"));
 			
 			if (State == State.SetDefaults)
 			{
@@ -54,14 +54,14 @@ namespace NinjaTrader.NinjaScript.Strategies
 				IsExitOnSessionCloseStrategy				= true;
 				ExitOnSessionCloseSeconds					= 30;
 				IsFillLimitOnTouch							= false;
-				labels                                      = "Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
+				labels                                      = "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 				localDate                                   = DateTime.Now;
 				MaximumBarsLookBack							= MaximumBarsLookBack.TwoHundredFiftySix;
 				OrderFillResolution							= OrderFillResolution.Standard;
 				// pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir + "stratOutputs.txt"; // Define the Path to our test file
 				// pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir + "stratOutputs.csv"; // Define the Path to our test file
-                pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString()+ "stratOutputs.txt"; // Define the Path to our test file
-				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString()+ "stratOutputs.csv"; // Define the Path to our test file
+                pathTXT 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString("yyyyMMddHH")+ "stratOutputs.txt"; // Define the Path to our test file
+				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir +localDate.ToString("yyyyMMddHH")+ "stratOutputs.csv"; // Define the Path to our test file
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.WaitUntilFlat;
 				TimeInForce									= TimeInForce.Gtc;
@@ -69,18 +69,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 				RealtimeErrorHandling						= RealtimeErrorHandling.StopCancelClose;
 				StopTargetHandling							= StopTargetHandling.PerEntryExecution;
 				BarsRequiredToTrade							= 20;
-
-				// Disable this property for performance gains in Strategy Analyzer optimizations
-				// See the Help Guide for additional information
 				IsInstantiatedOnEachOptimizationIteration	= true;
-				
-				sw = File.AppendText(pathCSV);  // Open the path for writing
-				sw.WriteLine(labels); // Append a new line to the file		
-				sw.Close(); // Close the file to allow future calls to access the file again.
-
-				sw = File.AppendText(pathTXT);  // Open the path for writing
-				sw.WriteLine(labels); // Append a new line to the file		
-				sw.Close(); // Close the file to allow future calls to access the file again.
 			}
 			else if (State == State.Configure)
 			{
@@ -90,13 +79,11 @@ namespace NinjaTrader.NinjaScript.Strategies
 			else if (State == State.DataLoaded)
 			{
 				Print(string.Format("STATE.DATALOADED"));
-				//AddChartIndicator(indiTachAur);
 				if( ChartControl != null )
                 {
                     foreach( NinjaTrader.Gui.NinjaScript.IndicatorRenderBase indicator in ChartControl.Indicators )
                         if( indicator.Name == "TachEonTimeWarpAurora" )
                         {
-                            // indiTachAur = (TachEonTimeWarpAurora)indicator;
 							indiTachAur = (Indicators.TachEon.TachEonTimeWarpAurora)indicator;
                             break;
                         }
@@ -104,7 +91,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 			}
 			else if(State == State.Terminated)
 			{
-				Print(string.Format("STATE.TERMINATED2"));
+				Print(string.Format("STATE.TERMINATED"));
 				if (sw != null)
 				{
 					sw.Close();
@@ -120,6 +107,8 @@ namespace NinjaTrader.NinjaScript.Strategies
 			if (BarsInProgress != 0 || CurrentBar < BarsRequiredToTrade) 
 				return;
 
+			 Print(string.Format("CurrentBar"));
+			 Print(CurrentBar);
 			 //indiTachAur.TrendPlot.GetValueAt(dataIndex)
 			 Print(string.Format("indiTachAur.TrendPlot.ToString"));
 			 Print(indiTachAur.TrendPlot.ToString());
@@ -161,25 +150,24 @@ namespace NinjaTrader.NinjaScript.Strategies
 			 Print(string.Format("indiTachAur.OpenPrice.Count"));
 			 Print(indiTachAur.OpenPrice.Count);
 			
-			//			Print(string.Format("CurrentBar"));
-			//			Print(CurrentBar);
+			
 			Print(string.Format("1ONBARUPDATE BEFORE PRINT indiTachAur.BarsToNextSignal.GetValueAt(CurrenBar)"));
 			Print(indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar));
 
 			dataIndex = CurrentBar;
-			ntStockData = Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
+			ntStockData = CurrentBar + "," + Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
 			auroraStockData = indiTachAur.TrendPlot.GetValueAt(dataIndex) + "," + indiTachAur.BarsToNextSignal.GetValueAt(dataIndex) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex) + "," + indiTachAur.SignalPattern.GetValueAt(dataIndex) + "," + indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(dataIndex) + "," + indiTachAur.DotPrice.GetValueAt(dataIndex) + "," + indiTachAur.OpenPrice.GetValueAt(dataIndex);
 			fullPrintOut = ntStockData + "," + auroraStockData;
 
-			Print(string.Format(fullPrintOut));
-			
+			Print(string.Format(fullPrintOut));			
+
 			sw = File.AppendText(pathCSV);  // Open the path for writing
 			sw.WriteLine(fullPrintOut); // Append a new line to the file		
 			sw.Close(); // Close the file to allow future calls to access the file again.
 
 			sw = File.AppendText(pathTXT);  // Open the path for writing
 			sw.WriteLine(fullPrintOut); // Append a new line to the file		
-			sw.Close(); // Close the file to allow future calls to access the file again.
+			sw.Close(); // Close the file to allow future calls to access the file again.            
 		}
 	}
 }
