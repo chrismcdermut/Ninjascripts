@@ -72,7 +72,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 			else if (State == State.Configure)
 			{
 				Print(string.Format("STATE.CONFIGURE"));
-				//AddChartIndicator(indiTachAur);
 			}
 			else if (State == State.DataLoaded)
 			{
@@ -107,50 +106,50 @@ namespace NinjaTrader.NinjaScript.Strategies
 
 /////////////Debugging/////////////
 
-			 Print(string.Format("CurrentBar"));
-			 Print(CurrentBar);
-			 //indiTachAur.TrendPlot.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.TrendPlot.ToString"));
-			 Print(indiTachAur.TrendPlot.ToString());
-			 Print(string.Format("indiTachAur.TrendPlot.Count"));
-			 Print(indiTachAur.TrendPlot.Count);
-			 //indiTachAur.BarsToNextSignal.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.BarsToNextSignal.ToString"));
-			 Print(indiTachAur.BarsToNextSignal.ToString());
-			 Print(string.Format("indiTachAur.BarsToNextSignal.Count"));
-			 Print(indiTachAur.BarsToNextSignal.Count);
-			 //indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.BarsFromPreviousSignal.ToString"));
-			 Print(indiTachAur.BarsFromPreviousSignal.ToString());
-			 Print(string.Format("indiTachAur.BarsFromPreviousSignal.Count"));
-			 Print(indiTachAur.BarsFromPreviousSignal.Count);
-			 //indiTachAur.SignalPattern.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.SignalPattern.ToString"));
-			 Print(indiTachAur.SignalPattern.ToString());
-			 Print(string.Format("indiTachAur.SignalPattern.Count"));
-			 Print(indiTachAur.SignalPattern.Count);
-			 //indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.BuySignalStopLine.ToString"));
-			 Print(indiTachAur.BuySignalStopLine.ToString());
-			 Print(string.Format("indiTachAur.BuySignalStopLine.Count"));
-			 Print(indiTachAur.BuySignalStopLine.Count);
-			 //indiTachAur.SellSignalStopLine.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.SellSignalStopLine.ToString"));
-			 Print(indiTachAur.SellSignalStopLine.ToString());
-			 Print(string.Format("indiTachAur.SellSignalStopLine.Count"));
-			 Print(indiTachAur.SellSignalStopLine.Count);
-			 //indiTachAur.DotPrice.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.DotPrice.ToString"));
-			 Print(indiTachAur.DotPrice.ToString());
-			 Print(string.Format("indiTachAur.DotPrice.Count"));
-			 Print(indiTachAur.DotPrice.Count);
-			 //indiTachAur.OpenPrice.GetValueAt(dataIndex)
-			 Print(string.Format("indiTachAur.OpenPrice.ToString"));
-			 Print(indiTachAur.OpenPrice.ToString());
-			 Print(string.Format("indiTachAur.OpenPrice.Count"));
-			 Print(indiTachAur.OpenPrice.Count);
+			Print(string.Format("CurrentBar"));
+			Print(CurrentBar);
+			//indiTachAur.TrendPlot.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.TrendPlot.ToString"));
+			Print(indiTachAur.TrendPlot.ToString());
+			Print(string.Format("indiTachAur.TrendPlot.Count"));
+			Print(indiTachAur.TrendPlot.Count);
+			//indiTachAur.BarsToNextSignal.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.BarsToNextSignal.ToString"));
+			Print(indiTachAur.BarsToNextSignal.ToString());
+			Print(string.Format("indiTachAur.BarsToNextSignal.Count"));
+			Print(indiTachAur.BarsToNextSignal.Count);
+			//indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.BarsFromPreviousSignal.ToString"));
+			Print(indiTachAur.BarsFromPreviousSignal.ToString());
+			Print(string.Format("indiTachAur.BarsFromPreviousSignal.Count"));
+			Print(indiTachAur.BarsFromPreviousSignal.Count);
+			//indiTachAur.SignalPattern.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.SignalPattern.ToString"));
+			Print(indiTachAur.SignalPattern.ToString());
+			Print(string.Format("indiTachAur.SignalPattern.Count"));
+			Print(indiTachAur.SignalPattern.Count);
+			//indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.BuySignalStopLine.ToString"));
+			Print(indiTachAur.BuySignalStopLine.ToString());
+			Print(string.Format("indiTachAur.BuySignalStopLine.Count"));
+			Print(indiTachAur.BuySignalStopLine.Count);
+			//indiTachAur.SellSignalStopLine.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.SellSignalStopLine.ToString"));
+			Print(indiTachAur.SellSignalStopLine.ToString());
+			Print(string.Format("indiTachAur.SellSignalStopLine.Count"));
+			Print(indiTachAur.SellSignalStopLine.Count);
+			//indiTachAur.DotPrice.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.DotPrice.ToString"));
+			Print(indiTachAur.DotPrice.ToString());
+			Print(string.Format("indiTachAur.DotPrice.Count"));
+			Print(indiTachAur.DotPrice.Count);
+			//indiTachAur.OpenPrice.GetValueAt(dataIndex)
+			Print(string.Format("indiTachAur.OpenPrice.ToString"));
+			Print(indiTachAur.OpenPrice.ToString());
+			Print(string.Format("indiTachAur.OpenPrice.Count"));
+			Print(indiTachAur.OpenPrice.Count);
 				
-			Print(string.Format("1ONBARUPDATE BEFORE PRINT indiTachAur.BarsToNextSignal.GetValueAt(CurrenBar)"));
+			Print(string.Format("indiTachAur.BarsToNextSignal.GetValueAt(CurrenBar)"));
 			Print(indiTachAur.BarsToNextSignal.GetValueAt(CurrentBar));
 
 ////////////Printing area////////////
@@ -160,11 +159,21 @@ namespace NinjaTrader.NinjaScript.Strategies
 			auroraStockData = indiTachAur.TrendPlot.GetValueAt(dataIndex) + "," + indiTachAur.BarsToNextSignal.GetValueAt(dataIndex) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex) + "," + indiTachAur.SignalPattern.GetValueAt(dataIndex) + "," + indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(dataIndex) + "," + indiTachAur.DotPrice.GetValueAt(dataIndex) + "," + indiTachAur.OpenPrice.GetValueAt(dataIndex);
 			fullPrintOut = ntStockData + "," + auroraStockData;
 
-			Print(string.Format(fullPrintOut));	
+			Print(string.Format(fullPrintOut));	 
 
-			sw = File.AppendText(pathCSV);  // Open the path for writing
-			sw.WriteLine(fullPrintOut); // Append a new line to the file		
-			sw.Close(); // Close the file to allow future calls to access the file again.            
+			if (!File.Exists(pathCSV))
+			{
+				sw = File.AppendText(pathCSV);
+				sw.WriteLine(labels);
+				sw.Close();
+			}
+			else
+			{
+				sw = File.AppendText(pathCSV);
+				sw.WriteLine(fullPrintOut); // Append a new line to the file		
+				sw.Close(); // Close the file to allow future calls to access the file again.   
+			}
+			        
 		}
 	}
 }
