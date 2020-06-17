@@ -1,8 +1,11 @@
 ## Ignore Some NinjaTrader Files
-de/
-es/
+de-DE/
+es-ES/
+fr-FR/
+it-IT/
+pt-PT/
 ru-RU/
-zh-Hant/
+zh-Hans/
 NinjaTrader.Custom.dll
 Resource.Designer.cs
 ResourceEnumConverter.cs
