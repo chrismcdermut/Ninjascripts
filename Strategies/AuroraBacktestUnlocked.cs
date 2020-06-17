@@ -37,12 +37,12 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string labels;
 		private int dataIndex;
 		private DateTime localDate;
-		private BarsPeriodType barType;
-		private int barValue;
+		private string barType;
+		private string barValue;
 		private string strategyInfo;
 		private string instrument;
-		private string swingStrength;
-		private string lookBackSources;
+		// private string swingStrength;
+		// private string lookBackSources;
 		private string fileName;
 		protected override void OnStateChange()
 		{
@@ -64,12 +64,15 @@ namespace NinjaTrader.NinjaScript.Strategies
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
 				localDate									= DateTime.Now;
-				instrument									= Instrument.FullName;
-				barType										= BarsPeriod.BarsPeriodType;
-				barValue									= BarsPeriod.Value;
-				swingStrength								= "UndefSwingStrength";
-				lookBackSources								= "lookBackSources";
-				strategyInfo								= "Instrument.barType.SwingStrength.lookBackSources";
+				instrument									=  Instrument != null ? Instrument.FullName : "UndefInstrument";
+				barType										= "UndefBarType";
+				barValue									= "UndefBarValue";
+				// swingStrength								= "UndefSwingStrength";
+				// lookBackSources								= "lookBackSources";
+				//localDate/value/instrument/value/barValue/value/barType/value/swingStrength/value/lookBackSettings/value/Enddate/value/lookbackDays
+				// strategyInfo = "localDate/"+localDate+"daysToLoad/"+DaysToLoad+"instrument/"+instrument+"barValue/"+barValue+"barType/"+barType;
+				strategyInfo = "localDate/"+localDate+"daysToLoad/"+DaysToLoad+"instrument/"+instrument;
+
 				fileName									= localDate.ToString("yyyyMMddHH") + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
@@ -97,6 +100,9 @@ namespace NinjaTrader.NinjaScript.Strategies
 							break;
 						}
 				}
+				barType										= "barType/"+BarsPeriod.ToString();
+				strategyInfo+=barType;
+				barValue									= "barValue/"+BarsPeriod.Value.ToString();
 			}
 			else if(State == State.Terminated)
 			{
@@ -125,10 +131,8 @@ namespace NinjaTrader.NinjaScript.Strategies
 
 			if (!File.Exists(pathCSV))
 			{
-				//localDate/value/instrument/value/barValue/value/barType/value/swingStrength/value/lookBackSettings/value/Enddate/value/lookbackDays
-				// strategyInfo = "localDate/"+localDate+"daysToLoad/"+DaysToLoad+"instrument/"+instrument+"barValue/"+barValue+"barType/"+barType;
 				sw = File.AppendText(pathCSV);
-				// sw.WriteLine(strategyInfo);
+				sw.WriteLine(strategyInfo);
 				sw.WriteLine(labels);
 				sw.Close();
 			}
