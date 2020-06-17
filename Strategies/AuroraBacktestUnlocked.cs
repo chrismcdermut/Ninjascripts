@@ -45,7 +45,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string lookBackSources;
 		private string fileName;
 		protected override void OnStateChange()
-		
 		{
 			Print(string.Format("ONSTATECHANGE RUNNING"));
 			
@@ -55,24 +54,24 @@ namespace NinjaTrader.NinjaScript.Strategies
 				Description									= @"AuroraBacktest";
 				Name										= "AuroraBacktestUnlocked";
 				Calculate									= Calculate.OnBarClose;
-				DaysToLoad                                  = 187;
+				DaysToLoad									= 187;
 				EntriesPerDirection							= 1;
 				EntryHandling								= EntryHandling.AllEntries;
 				IsExitOnSessionCloseStrategy				= true;
 				ExitOnSessionCloseSeconds					= 30;
 				IsFillLimitOnTouch							= false;
-				labels                                      = "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
+				labels										= "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
-				localDate                                   = DateTime.Now;
-				instrument                                  = Instrument.FullName;
-				barType                                     = BarsPeriod.BarsPeriodType;
-				barValue                                    = BarsPeriod.Value;
-				swingStrength                               = "UndefSwingStrength";
-				lookBackSources                             = "lookBackSources";
-				strategyInfo                                = "Instrument.barType.SwingStrength.lookBackSources";
-				fileName                                    = localDate.ToString("yyyyMMddHH") + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
-				pathCSV 			                        = NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
+				localDate									= DateTime.Now;
+				instrument									= Instrument.FullName;
+				barType										= BarsPeriod.BarsPeriodType;
+				barValue									= BarsPeriod.Value;
+				swingStrength								= "UndefSwingStrength";
+				lookBackSources								= "lookBackSources";
+				strategyInfo								= "Instrument.barType.SwingStrength.lookBackSources";
+				fileName									= localDate.ToString("yyyyMMddHH") + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
+				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.ImmediatelySubmit;
 				TimeInForce									= TimeInForce.Gtc;
@@ -90,14 +89,14 @@ namespace NinjaTrader.NinjaScript.Strategies
 			{
 				Print(string.Format("STATE.DATALOADED"));
 				if( ChartControl != null )
-                {
-                    foreach( NinjaTrader.Gui.NinjaScript.IndicatorRenderBase indicator in ChartControl.Indicators )
-                        if( indicator.Name == "TachEonTimeWarpAurora" )
-                        {
+				{
+					foreach( NinjaTrader.Gui.NinjaScript.IndicatorRenderBase indicator in ChartControl.Indicators )
+						if( indicator.Name == "TachEonTimeWarpAurora" )
+						{
 							indiTachAur = (Indicators.TachEon.TachEonTimeWarpAurora)indicator;
-                            break;
-                        }
-               	}
+							break;
+						}
+				}
 			}
 			else if(State == State.Terminated)
 			{
@@ -119,7 +118,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 
 ////////////Printing area////////////
 
-			dataIndex = CurrentBar-1;
+			dataIndex = (CurrentBar-1);
 			ntStockData = CurrentBar + "," + Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
 			auroraStockData = indiTachAur.TrendPlot.GetValueAt(dataIndex) + "," + indiTachAur.BarsToNextSignal.GetValueAt(dataIndex) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex) + "," + indiTachAur.SignalPattern.GetValueAt(dataIndex) + "," + indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(dataIndex) + "," + indiTachAur.DotPrice.GetValueAt(dataIndex) + "," + indiTachAur.OpenPrice.GetValueAt(dataIndex);
 			fullPrintOut = ntStockData + "," + auroraStockData;
@@ -140,7 +139,6 @@ namespace NinjaTrader.NinjaScript.Strategies
 				sw.WriteLine(fullPrintOut); // Append a new line to the file		
 				sw.Close(); // Close the file to allow future calls to access the file again.   
 			}
-			        
 		}
 	}
 }
