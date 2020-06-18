@@ -68,16 +68,16 @@ namespace NinjaTrader.NinjaScript.Strategies
 				labels										= "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
-				localDate									= DateTime.Now;
+				localDate									= DateTime.Now.ToString("yyyyMMddHH");
 				instrument									= "";
 				barType										= "UndefBarType";
 				barValue									= "UndefBarValue";
 				instrumentType                              = "UndefInstrumentType";
 				// swingStrength								= "UndefSwingStrength";
 				// lookBackSources								= "lookBackSources";
-				strategyLabels                              = "localDate,instrument,barValue,barType,swingStrength,lookBackSettings,Enddate,lookbackDays";
-				strategyInfo                                = localDate+","+DaysToLoad;
-				fileName									= localDate.ToString("yyyyMMddHH") + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
+				strategyLabels                              = "localDate,DaysToLoad,instrument,barValue,barType,swingStrength,lookBackSettings,Enddate,lookbackDays";
+				strategyInfo                                = localDate + "," + DaysToLoad;
+				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
 				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "TestData/";
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
@@ -125,8 +125,8 @@ namespace NinjaTrader.NinjaScript.Strategies
 			fileDirectoryPath                           = ninjaDirectory+instrument;
 			barType										= BarsPeriod.ToString();
 			barValue									= BarsPeriod.Value.ToString();
-			strategyInfo                                +=","+instrument+","+barType+","+barValue;
-			instrumentType                              =instrument+BarsPeriod.ToString()+BarsPeriod.Value.ToString();
+			strategyInfo                                = strategyInfo+","+instrument+","+barType+","+barValue;
+			instrumentType                              = instrument+BarsPeriod.ToString()+BarsPeriod.Value.ToString();
 			pathCSV										= fileDirectoryPath +"/"+ instrumentType+fileName; // Define the Path to our test file
 
 			if (!Directory.Exists(fileDirectoryPath))
