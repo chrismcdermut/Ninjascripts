@@ -44,6 +44,11 @@ namespace NinjaTrader.NinjaScript.Strategies
 		// private string swingStrength;
 		// private string lookBackSources;
 		private string fileName;
+		private string instrumentType;
+		private string ninjaDirectory;
+		private string instrumentDirectory;
+		private string fileDirectoryPath;
+		private string strategyLabels;
 		protected override void OnStateChange()
 		{
 			Print(string.Format("ONSTATECHANGE RUNNING"));
@@ -64,16 +69,16 @@ namespace NinjaTrader.NinjaScript.Strategies
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
 				localDate									= DateTime.Now;
-				instrument									=  Instrument != null ? Instrument.FullName : "UndefInstrument";
+				instrument									= "";
 				barType										= "UndefBarType";
 				barValue									= "UndefBarValue";
+				instrumentType                              = "UndefInstrumentType";
 				// swingStrength								= "UndefSwingStrength";
 				// lookBackSources								= "lookBackSources";
-				//localDate/value/instrument/value/barValue/value/barType/value/swingStrength/value/lookBackSettings/value/Enddate/value/lookbackDays
-				// strategyInfo = "localDate/"+localDate+"daysToLoad/"+DaysToLoad+"instrument/"+instrument+"barValue/"+barValue+"barType/"+barType;
-				strategyInfo = "localDate/"+localDate+"daysToLoad/"+DaysToLoad+"instrument/"+instrument;
-
+				strategyLabels                              = "localDate,instrument,barValue,barType,swingStrength,lookBackSettings,Enddate,lookbackDays";
+				strategyInfo                                = localDate+","+DaysToLoad;
 				fileName									= localDate.ToString("yyyyMMddHH") + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
+				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "TestData/";
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.ImmediatelySubmit;
@@ -86,11 +91,9 @@ namespace NinjaTrader.NinjaScript.Strategies
 			}
 			else if (State == State.Configure)
 			{
-				Print(string.Format("STATE.CONFIGURE"));
 			}
 			else if (State == State.DataLoaded)
 			{
-				Print(string.Format("STATE.DATALOADED"));
 				if( ChartControl != null )
 				{
 					foreach( NinjaTrader.Gui.NinjaScript.IndicatorRenderBase indicator in ChartControl.Indicators )
@@ -100,13 +103,9 @@ namespace NinjaTrader.NinjaScript.Strategies
 							break;
 						}
 				}
-				barType										= "barType/"+BarsPeriod.ToString();
-				strategyInfo+=barType;
-				barValue									= "barValue/"+BarsPeriod.Value.ToString();
 			}
 			else if(State == State.Terminated)
 			{
-				Print(string.Format("STATE.TERMINATED"));
 				if (sw != null)
 				{
 					sw.Close();
@@ -118,26 +117,43 @@ namespace NinjaTrader.NinjaScript.Strategies
 
 		protected override void OnBarUpdate()
 		{
-			Print(string.Format("ONBARUPDATE RUNNING BEFORE GUARD"));
 			if (BarsInProgress != 0 || CurrentBar < BarsRequiredToTrade) 
 				return;
+			
+////////////Instrument Variable Setting/////////
+			instrument									= Instrument != null ? Instrument.FullName : "UndefInstrument";
+			fileDirectoryPath                           = ninjaDirectory+instrument;
+			barType										= BarsPeriod.ToString();
+			barValue									= BarsPeriod.Value.ToString();
+			strategyInfo                                +=","+instrument+","+barType+","+barValue;
+			instrumentType                              =instrument+BarsPeriod.ToString()+BarsPeriod.Value.ToString();
+			pathCSV										= fileDirectoryPath +"/"+ instrumentType+fileName; // Define the Path to our test file
 
-////////////Printing area////////////
+			if (!Directory.Exists(fileDirectoryPath))
+			{
+			    Directory.CreateDirectory(fileDirectoryPath);
+			}
+
+////////////Data Variable Setting////////////
 
 			dataIndex = (CurrentBar-1);
 			ntStockData = CurrentBar + "," + Time[0] + "," + Open[0] + "," + High[0] + "," + Low[0] + "," + Close[0];
 			auroraStockData = indiTachAur.TrendPlot.GetValueAt(dataIndex) + "," + indiTachAur.BarsToNextSignal.GetValueAt(dataIndex) + "," + indiTachAur.BarsFromPreviousSignal.GetValueAt(dataIndex) + "," + indiTachAur.SignalPattern.GetValueAt(dataIndex) + "," + indiTachAur.BuySignalStopLine.GetValueAt(dataIndex)+ "," + indiTachAur.SellSignalStopLine.GetValueAt(dataIndex) + "," + indiTachAur.DotPrice.GetValueAt(dataIndex) + "," + indiTachAur.OpenPrice.GetValueAt(dataIndex);
 			fullPrintOut = ntStockData + "," + auroraStockData;
 
+////////////Printing area////////////
+
 			if (!File.Exists(pathCSV))
 			{
 				sw = File.AppendText(pathCSV);
+				sw.WriteLine(strategyLabels);
 				sw.WriteLine(strategyInfo);
 				sw.WriteLine(labels);
 				sw.Close();
 			}
 			else
 			{
+				Print("string.Format(fullPrintOut)");
 				Print(string.Format(fullPrintOut));
 				sw = File.AppendText(pathCSV);
 				sw.WriteLine(fullPrintOut); // Append a new line to the file		
