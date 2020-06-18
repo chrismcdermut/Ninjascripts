@@ -78,7 +78,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 				strategyLabels                              = "localDate,DaysToLoad,instrument,barValue,barType,swingStrength,lookBackSettings,Enddate,lookbackDays";
 				strategyInfo                                = localDate + "," + DaysToLoad;
 				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
-				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "TestData/";
+				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "bin/"+"Custom/"+"TestData/";
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.ImmediatelySubmit;
