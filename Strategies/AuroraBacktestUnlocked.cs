@@ -36,7 +36,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string fullPrintOut;
 		private string labels;
 		private int dataIndex;
-		private DateTime localDate;
+		private string localDate;
 		private string barType;
 		private string barValue;
 		private string strategyInfo;
