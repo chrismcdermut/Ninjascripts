@@ -28,38 +28,78 @@ namespace NinjaTrader.NinjaScript.Strategies
 {
 	public class AuroraBacktestUnlocked : Strategy
 	{
-		private string pathCSV;
-		private StreamWriter sw; // a variable for the StreamWriter that will be used 
-		private Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
-		private string ntStockData;
 		private string auroraStockData;
-		private string fullPrintOut;
-		private string labels;
-		private int dataIndex;
-		private string localDate;
 		private string barType;
 		private string barValue;
-		private string strategyInfo;
-		private string instrument;
-		// private string swingStrength;
-		// private string lookBackSources;
+		private int dataIndex;
+		private int daysLoaded;
 		private string fileName;
-		private string instrumentType;
-		private string ninjaDirectory;
-		private string instrumentDirectory;
 		private string fileDirectoryPath;
+		private string fullPrintOut;
+		private Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
+		private string instrument;
+		private string instrumentType;
+		private string labels;
+		private string localDate;
+		private string ninjaDirectory;
+		private string ntStockData;
+		private string pathCSV;
+		private string strategyInfo;
 		private string strategyLabels;
+		private StreamWriter sw; // a variable for the StreamWriter that will be used 
+		private string LookBackSettings;
+		private string VolOffSetCheck;
+		private string VolOffsetRatio;
+		private string SwingStrength;
+
+///////////////////Parameters///////////////////
+//TODO: Change types to string from ints
+        [Range(1, int.MaxValue)]
+        [NinjaScriptProperty]
+        [Display(Name="Period", Description="Numbers of bars used for calculations", Order=1, GroupName="Parameters")]
+        public int Period
+        { get; set; }
+		
+		// [Range(1, int.MaxValue)]
+		// [NinjaScriptProperty]
+		// [Display(Name="Period", Description="Look back sources ie, 12345(trade day) 7142128(days ago)", Order=1, GroupName="Parameters")]
+		// private int Period
+		// { get; set; }
+
+		// [Range(1, int.MaxValue)]
+		// [NinjaScriptProperty]
+		// [Display(Name="lookBackSettings", Description="Look back sources ie, 12345(trade day) 7142128(days ago)", Order=2, GroupName="Parameters")]
+		// private int LookBackSettings
+		// { get; set; }
+		
+		// [Range(1, int.MaxValue)]
+		// [NinjaScriptProperty]
+		// [Display(Name="swingStrength", Description="Chosen swing strength", Order=3, GroupName="Parameters")]
+		// private int SwingStrength
+		// { get; set; }
+
+		// [Range(1, int.MaxValue)]
+		// [NinjaScriptProperty]
+		// [Display(Name="volOffSetCheck", Description="Volatility offset is checked, ie, 1,0", Order=4, GroupName="Parameters")]
+		// private int VolOffSetCheck
+		// { get; set; }
+
+		// [Range(1, int.MaxValue)]
+		// [NinjaScriptProperty]
+		// [Display(Name="volOffsetRatio", Description="Volatility offset ratio", Order=5, GroupName="Parameters")]
+		// private int VolOffsetRatio
+		// { get; set; }
+
 		protected override void OnStateChange()
 		{
-			Print(string.Format("ONSTATECHANGE RUNNING"));
-			
+			Print(string.Format("ONSTATECHANGE"));	
 			if (State == State.SetDefaults)
 			{
 				Print(string.Format("STATE.SETDEFAULTS"));
 				Description									= @"AuroraBacktest";
 				Name										= "AuroraBacktestUnlocked";
 				Calculate									= Calculate.OnBarClose;
-				DaysToLoad									= 187;
+				daysLoaded									= 0;
 				EntriesPerDirection							= 1;
 				EntryHandling								= EntryHandling.AllEntries;
 				IsExitOnSessionCloseStrategy				= true;
@@ -69,14 +109,17 @@ namespace NinjaTrader.NinjaScript.Strategies
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
 				OrderFillResolution							= OrderFillResolution.Standard;
 				localDate									= DateTime.Now.ToString("yyyyMMddHH");
-				instrument									= "";
+				instrument									= "UndefInstrument";
 				barType										= "UndefBarType";
 				barValue									= "UndefBarValue";
 				instrumentType                              = "UndefInstrumentType";
-				// swingStrength								= "UndefSwingStrength";
-				// lookBackSources								= "lookBackSources";
-				strategyLabels                              = "localDate,DaysToLoad,instrument,barValue,barType,swingStrength,lookBackSettings,Enddate,lookbackDays";
-				strategyInfo                                = localDate + "," + DaysToLoad;
+				SwingStrength								= "5";
+				LookBackSettings							= "Undef";
+				VolOffSetCheck                              = "1.5";
+				VolOffsetRatio                              = "Checked";
+				Period                                      = 0;
+				strategyLabels                              = "localDate,instrument,barValue,barType,daysLoaded,swingStrength,lookBackSettings,volOffSetCheck,volOffsetRatio,Period";
+				strategyInfo                                = localDate;
 				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
 				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "bin/"+"Custom/"+"TestData/";
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
@@ -91,6 +134,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 			}
 			else if (State == State.Configure)
 			{
+				/*Do something here eventually*/
 			}
 			else if (State == State.DataLoaded)
 			{
@@ -125,9 +169,10 @@ namespace NinjaTrader.NinjaScript.Strategies
 			fileDirectoryPath                           = ninjaDirectory+instrument;
 			barType										= BarsPeriod.ToString();
 			barValue									= BarsPeriod.Value.ToString();
-			strategyInfo                                = strategyInfo+","+instrument+","+barType+","+barValue;
-			instrumentType                              = instrument+BarsPeriod.ToString()+BarsPeriod.Value.ToString();
-			pathCSV										= fileDirectoryPath +"/"+ instrumentType+fileName; // Define the Path to our test file
+			daysLoaded                                  = ChartBars.Properties.DaysBack;
+			strategyInfo                                = strategyInfo+","+instrument+","+barValue+","+barType+","+daysLoaded+","+SwingStrength+","+LookBackSettings+","+VolOffSetCheck+","+VolOffsetRatio+","+Period;
+			instrumentType                              = instrument+BarsPeriod.ToString();
+			pathCSV										= fileDirectoryPath +"/"+instrumentType+Period+daysLoaded+"days"+fileName; // Define the Path to our test file
 
 			if (!Directory.Exists(fileDirectoryPath))
 			{
