@@ -46,7 +46,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string pathCSV;
 		private string strategyInfo;
 		private string strategyLabels;
-		private StreamWriter sw; // a variable for the StreamWriter that will be used fcv 
+		private StreamWriter sw; // a variable for the StreamWriter that will be used for csv 
 
 ///////////////////Parameters///////////////////
 //TODO: Change types to string from ints
@@ -88,30 +88,18 @@ namespace NinjaTrader.NinjaScript.Strategies
 				Description									= @"AuroraBacktest";
 				Name										= "AuroraBacktestUnlocked";
 				Calculate									= Calculate.OnBarClose;
-				daysLoaded									= 0;
 				EntriesPerDirection							= 1;
 				EntryHandling								= EntryHandling.AllEntries;
 				IsExitOnSessionCloseStrategy				= true;
 				ExitOnSessionCloseSeconds					= 30;
 				IsFillLimitOnTouch							= false;
-				labels										= "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 				MaximumBarsLookBack							= MaximumBarsLookBack.Infinite;
-				OrderFillResolution							= OrderFillResolution.Standard;
-				localDate									= DateTime.Now.ToString("yyyyMMddHH");
-				instrument									= "UndefInstrument";
-				barType										= "UndefBarType";
-				barValue									= "UndefBarValue";
-				instrumentType                              = "UndefInstrumentType";
+				OrderFillResolution							= OrderFillResolution.Standard;				
 				SwingStrength								= 5;
 				LookbackSetting 							= "12345etc";
 				LookbackSources							    = "daysAgo||TradingDays";
 				VolOffSetCheck                              = true;
 				VolOffsetRatio                              = 1.5;
-				strategyLabels                              = "localDate,instrument,barValue,barType,daysLoaded,LookbackSetting,LookbackSources,SwingStrength,VolOffSetCheck,VolOffsetRatio";
-				strategyInfo                                = localDate;
-				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
-				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "bin/"+"Custom/"+"TestData/";
-				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
 				Slippage									= 0;
 				StartBehavior								= StartBehavior.ImmediatelySubmit;
 				TimeInForce									= TimeInForce.Gtc;
@@ -120,6 +108,19 @@ namespace NinjaTrader.NinjaScript.Strategies
 				StopTargetHandling							= StopTargetHandling.PerEntryExecution;
 				BarsRequiredToTrade							= 2;
 				IsInstantiatedOnEachOptimizationIteration	= true;
+
+				daysLoaded									= 0;
+				localDate									= DateTime.Now.ToString("yyyyMMddHH");
+				instrument									= "UndefInstrument";
+				barType										= "UndefBarType";
+				barValue									= "UndefBarValue";
+				instrumentType                              = "UndefInstrumentType";
+				strategyLabels                              = "localDate,instrument,barValue,barType,daysLoaded,LookbackSetting,LookbackSources,SwingStrength,VolOffSetCheck,VolOffsetRatio";
+				strategyInfo                                = localDate;
+				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
+				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "bin/"+"Custom/"+"TestData/";
+				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file 
+				labels										= "CurrentBar,Time,Open,High,Low,Close,TrendPlot,BarsToNextSignal,BarsFromPreviousSignal,SignalPattern,BuySignalStopLine,SellSignalStopLine,DotPrice,OpenPrice";
 			}
 			else if (State == State.Configure)
 			{
