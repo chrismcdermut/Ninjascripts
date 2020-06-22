@@ -32,7 +32,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string localDate;
 		private string ninjaDirectory;								
 		private string pathCSV;
-		// private Indicators.TachEon.TachEonTimeWarpForce indiTachForce;
+		private Indicators.TachEon.TachEonForce indiTachForce;
 		// private Indicators.TachEon.TachEonTimeWarpAurora indiTachAur;
 		private StreamWriter sw; // a variable for the StreamWriter that will be used for csv
 		protected override void OnStateChange()
@@ -75,11 +75,11 @@ namespace NinjaTrader.NinjaScript.Strategies
 				{
 					foreach( NinjaTrader.Gui.NinjaScript.IndicatorRenderBase indicator in ChartControl.Indicators )
 					{
-                        // if( indicator.Name == "TachEonForce" )
-						// {
-						// 	indiTachForce = (Indicators.TachEon.TachEonForce)indicator;
-						// 	break;
-						// }
+                        if( indicator.Name == "TachEonForce" )
+						{
+							indiTachForce = (Indicators.TachEon.TachEonForce)indicator;
+							break;
+						}
 						// sw = File.AppendText(pathCSV);
 				        // // sw.WriteLine(strategyLabels);
 				        // // sw.WriteLine(strategyInfo);
