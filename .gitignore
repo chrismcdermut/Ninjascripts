@@ -6,6 +6,7 @@ it-IT/
 pt-PT/
 ru-RU/
 zh-Hans/
+obj/
 NinjaTrader.Custom.dll
 Resource.Designer.cs
 ResourceEnumConverter.cs
@@ -15,7 +16,7 @@ Resource.es*
 Resource.ru-RU*
 Resource.zh*
 AddOns/@*
-BarTypes/@*
+BarsTypes/@*
 ChartStyles/@*
 DrawingTools/@*
 ExportNinjaScript/
