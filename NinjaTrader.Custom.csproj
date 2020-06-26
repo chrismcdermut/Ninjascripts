@@ -249,7 +249,6 @@
     <Compile Include="Indicators\%40ZLEMA.cs" />
     <Compile Include="Indicators\%40BuySellPressure.cs" />
     <Compile Include="Indicators\%40ZigZag.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="MarketAnalyzerColumns\%40AskPrice.cs" />
     <Compile Include="MarketAnalyzerColumns\%40AskSize.cs" />
     <Compile Include="MarketAnalyzerColumns\%40AverageDailyVolume.cs" />
@@ -371,13 +370,17 @@
     <Compile Include="Strategies\AuroraBacktestUnlocked.cs" />
     <Compile Include="Strategies\MySharedMethodsStrategy.cs" />
     <Compile Include="Strategies\SampleBoolSeriesStrategy.cs" />
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
     <Compile Include="Strategies\TachEonForceBacktestUnlocked.cs" />
     <Compile Include="AddOns\DtwAddOns\DtwDraw.cs" />
     <Compile Include="AddOns\DtwAddOns\DtwUi.cs" />
     <Compile Include="Indicators\TachEon\TachEonCore.cs" />
     <Compile Include="Indicators\TachEon\TachEonForce.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Strategies\Helpers\ChartChecker.cs" />
+    <Compile Include="Strategies\Helpers\StreamWriter.cs" />
+    <Compile Include="BTTFIndicators\TachEonTimeWarpAurora\TachEonTimeWarpAurora.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\Custom.AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">

@@ -60,8 +60,8 @@ namespace NinjaTrader.NinjaScript.Strategies
 				// See the Help Guide for additional information
 				IsInstantiatedOnEachOptimizationIteration	= true;
 				
-				localDate									= DateTime.Now.ToString("yyyyMMddHH");
 				fileName									= localDate + "outputs.csv"; //can add/remove localDate.ToString("yyyyMMddHH") from middle
+				localDate									= DateTime.Now.ToString("yyyyMMddHH");
 				ninjaDirectory								= NinjaTrader.Core.Globals.UserDataDir + "bin/"+"Custom/"+"TestData/";
 				pathCSV										= NinjaTrader.Core.Globals.UserDataDir + fileName; // Define the Path to our test file
 			}
