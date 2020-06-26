@@ -1,5 +1,5 @@
 #region Using declarations
-// using CustomHelpers.StreamWriter;
+using CustomHelpers.StreamWriter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,7 +48,7 @@ namespace NinjaTrader.NinjaScript.Strategies
 		private string strategyInfo;
 		private string strategyLabels;
 		private StreamWriter sw; // a variable for the StreamWriter that will be used for csv 
-		// private WriteTool wt; 
+		private WriteTool wt; 
 
 ///////////////////Parameters///////////////////
 //TODO: Change types to string from ints
@@ -166,12 +166,12 @@ namespace NinjaTrader.NinjaScript.Strategies
 			instrumentType                              = instrument+"."+BarsPeriod.ToString();
 			pathCSV										= fileDirectoryPath +"/"+instrumentType+daysLoaded+"days"+"."+LookbackSources+LookbackSetting+SwingStrength+"ss"+VolOffsetRatio+"volr"+"."+fileName; // Define the Path to our test file
 
-			if (!Directory.Exists(fileDirectoryPath))
-			{
-			    Directory.CreateDirectory(fileDirectoryPath);
-			}
+			// if (!Directory.Exists(fileDirectoryPath))
+			// {
+			//     Directory.CreateDirectory(fileDirectoryPath);
+			// }
 
-			// wt.makeDirectory(fileDirectoryPath);
+			wt.makeDirectory(fileDirectoryPath);
 
 ////////////Data Variable Setting////////////
 
