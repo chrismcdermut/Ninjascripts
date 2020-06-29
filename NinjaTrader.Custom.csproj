@@ -373,14 +373,27 @@
     <Compile Include="Strategies\TachEonForceBacktestUnlocked.cs" />
     <Compile Include="AddOns\DtwAddOns\DtwDraw.cs" />
     <Compile Include="AddOns\DtwAddOns\DtwUi.cs" />
-    <Compile Include="Indicators\TachEon\TachEonCore.cs" />
-    <Compile Include="Indicators\TachEon\TachEonForce.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Strategies\Helpers\ChartChecker.cs" />
     <Compile Include="Strategies\Helpers\StreamWriter.cs" />
     <Compile Include="BTTFIndicators\TachEonTimeWarpAurora\TachEonTimeWarpAurora.cs" />
     <Compile Include="obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.cs" />
     <Compile Include="obj\Debug\netstandard2.0\Custom.AssemblyInfo.cs" />
+    <Compile Include="BarsTypes\%40DayBarsType.cs" />
+    <Compile Include="BarsTypes\%40HeikenAshiBarsType.cs" />
+    <Compile Include="BarsTypes\%40KagiBarsType.cs" />
+    <Compile Include="BarsTypes\%40LineBreakBarsType.cs" />
+    <Compile Include="BarsTypes\%40MinuteBarsType.cs" />
+    <Compile Include="BarsTypes\%40MonthBarsType.cs" />
+    <Compile Include="BarsTypes\%40PointAndFigureBarsType.cs" />
+    <Compile Include="BarsTypes\%40RangeBarsType.cs" />
+    <Compile Include="BarsTypes\%40RenkoBarsType.cs" />
+    <Compile Include="BarsTypes\%40SecondBarsType.cs" />
+    <Compile Include="BarsTypes\%40TickBarsType.cs" />
+    <Compile Include="BarsTypes\%40VolumeBarsType.cs" />
+    <Compile Include="BarsTypes\%40WeekBarsType.cs" />
+    <Compile Include="BarsTypes\%40YearsBarsType.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">
