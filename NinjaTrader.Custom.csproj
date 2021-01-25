@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF9FA825-F452-4071-ACE9-FAB5B44A013E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NinjaTrader.Custom</RootNamespace>
+    <AssemblyName>NinjaTrader.Custom</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\NinjaTrader.Custom.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <LangVersion>5</LangVersion>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NinjaTrader.Custom.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DebugSymbols>true</DebugSymbols>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>5</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="WindowsBase">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\WPF\WindowsBase.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\WPF\PresentationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\WPF\PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\WPF\UIAutomationProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.DataPresenter.v15.1">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\InfragisticsWPF4.DataPresenter.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infralution.Localization.Wpf">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\Infralution.Localization.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="NinjaTrader.Core">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\NinjaTrader.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NinjaTrader.Gui">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\NinjaTrader.Gui.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>C:\Program Files (x86)\NinjaTrader 8\bin64\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="TachEonTimeWarpAurora">
+      <HintPath>C:\Users\chris\OneDrive\Documents\NinjaTrader 8\bin\Custom\TachEonTimeWarpAurora.dll</HintPath>
+    </Reference>
+    <Reference Include="NinjaTrader.Vendor">
+      <HintPath>C:\Users\chris\OneDrive\Documents\NinjaTrader 8\bin\Custom\NinjaTrader.Vendor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartStyles\%40BoxStyle.cs" />
+    <Compile Include="ChartStyles\%40Equivolume.cs" />
+    <Compile Include="ChartStyles\%40HollowCandleStyle.cs" />
+    <Compile Include="ChartStyles\%40CandleStyle.cs" />
+    <Compile Include="ChartStyles\%40KagiStyle.cs" />
+    <Compile Include="ChartStyles\%40LineOnCloseStyle.cs" />
+    <Compile Include="ChartStyles\%40MountainStyle.cs" />
+    <Compile Include="ChartStyles\%40OhlcStyle.cs" />
+    <Compile Include="ChartStyles\%40OpenCloseStyle.cs" />
+    <Compile Include="ChartStyles\%40PointAndFigureStyle.cs" />
+    <Compile Include="DrawingTools\%40AndrewsPitchfork.cs" />
+    <Compile Include="DrawingTools\%40Arc.cs" />
+    <Compile Include="DrawingTools\%40ChartMarkers.cs" />
+    <Compile Include="DrawingTools\%40PathTool.cs" />
+    <Compile Include="DrawingTools\%40Polygon.cs" />
+    <Compile Include="DrawingTools\%40Ruler.cs" />
+    <Compile Include="DrawingTools\%40Text.cs" />
+    <Compile Include="DrawingTools\%40FibonacciTools.cs" />
+    <Compile Include="DrawingTools\%40GannFan.cs" />
+    <Compile Include="DrawingTools\%40Lines.cs" />
+    <Compile Include="DrawingTools\%40PriceLevels.cs" />
+    <Compile Include="DrawingTools\%40Region.cs" />
+    <Compile Include="DrawingTools\%40RegionHighlight.cs" />
+    <Compile Include="DrawingTools\%40RegressionChannel.cs" />
+    <Compile Include="DrawingTools\%40RiskReward.cs" />
+    <Compile Include="DrawingTools\%40Shapes.cs" />
+    <Compile Include="DrawingTools\%40TimeCycles.cs" />
+    <Compile Include="DrawingTools\%40TrendChannel.cs" />
+    <Compile Include="ImportTypes\%40TickDataImportType.cs" />
+    <Compile Include="Indicators\%40BarTimer.cs" />
+    <Compile Include="Indicators\%40Correlation.cs" />
+    <Compile Include="Indicators\%40BlockVolume.cs" />
+    <Compile Include="Indicators\%40BuySellVolume.cs" />
+    <Compile Include="Indicators\%40CamarillaPivots.cs" />
+    <Compile Include="Indicators\%40CandleStickPattern.cs" />
+    <Compile Include="Indicators\%40ChoppinessIndex.cs" />
+    <Compile Include="Indicators\%40COT.cs" />
+    <Compile Include="Indicators\%40Darvas.cs" />
+    <Compile Include="Indicators\%40DisparityIndex.cs" />
+    <Compile Include="Indicators\%40FibonacciPivots.cs" />
+    <Compile Include="Indicators\%40DrawingToolTile.cs" />
+    <Compile Include="Indicators\%40McClellanOscillator.cs" />
+    <Compile Include="Indicators\%40MoneyFlowOscillator.cs" />
+    <Compile Include="Indicators\%40MovingAverageRibbon.cs" />
+    <Compile Include="Indicators\%40NetChangeDisplay.cs" />
+    <Compile Include="Indicators\%40Pivots.cs" />
+    <Compile Include="Indicators\%40PriceLine.cs" />
+    <Compile Include="Indicators\%40PsychologicalLine.cs" />
+    <Compile Include="Indicators\%40RangeCounter.cs" />
+    <Compile Include="Indicators\%40RelativeVigorIndex.cs" />
+    <Compile Include="Indicators\%40SampleCustomRender.cs" />
+    <Compile Include="Indicators\%40TickCounter.cs" />
+    <Compile Include="Indicators\%40TrendLines.cs" />
+    <Compile Include="Indicators\%40VolumeCounter.cs" />
+    <Compile Include="Indicators\%40VolumeProfile.cs" />
+    <Compile Include="Indicators\%40VolumeUpDown.cs" />
+    <Compile Include="Indicators\%40VolumeZones.cs" />
+    <Compile Include="Indicators\%40Vortex.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40ChartMini.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40ChartNetChange.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DaysUntilRollover.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40NetChangeMaxDown.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40NetChangeMaxUp.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40TSTrend.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxStrength.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxStrengthLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxStrengthShort.cs" />
+    <Compile Include="Optimizers\%40StrategyGenerator.cs" />
+    <Compile Include="ResourceEnumConverter.cs" />
+    <Compile Include="ImportTypes\%40TextImportType.cs" />
+    <Compile Include="ImportTypes\%40TextImportTypeBeginningOfBar.cs" />
+    <Compile Include="Indicators\%40ADX.cs" />
+    <Compile Include="Indicators\%40Aroon.cs" />
+    <Compile Include="Indicators\%40AroonOscillator.cs" />
+    <Compile Include="Indicators\%40ATR.cs" />
+    <Compile Include="Indicators\%40Bollinger.cs" />
+    <Compile Include="Indicators\%40CCI.cs" />
+    <Compile Include="Indicators\%40ChaikinMoneyFlow.cs" />
+    <Compile Include="Indicators\%40ChaikinOscillator.cs" />
+    <Compile Include="Indicators\%40CurrentDayOHL.cs" />
+    <Compile Include="Indicators\%40DMI.cs" />
+    <Compile Include="Indicators\%40DonchianChannel.cs" />
+    <Compile Include="Indicators\%40EMA.cs" />
+    <Compile Include="Indicators\%40FisherTransform.cs" />
+    <Compile Include="Indicators\%40Indicator.cs" />
+    <Compile Include="Indicators\%40KeltnerChannel.cs" />
+    <Compile Include="Indicators\%40LinReg.cs" />
+    <Compile Include="Indicators\%40MACD.cs" />
+    <Compile Include="Indicators\%40MAMA.cs" />
+    <Compile Include="Indicators\%40MAX.cs" />
+    <Compile Include="Indicators\%40MFI.cs" />
+    <Compile Include="Indicators\%40MIN.cs" />
+    <Compile Include="Indicators\%40Momentum.cs" />
+    <Compile Include="Indicators\%40OBV.cs" />
+    <Compile Include="Indicators\%40PriceOscillator.cs" />
+    <Compile Include="Indicators\%40PriorDayOHLC.cs" />
+    <Compile Include="Indicators\%40ROC.cs" />
+    <Compile Include="Indicators\%40RSI.cs" />
+    <Compile Include="Indicators\%40SMA.cs" />
+    <Compile Include="Indicators\%40StdDev.cs" />
+    <Compile Include="Indicators\%40Stochastics.cs" />
+    <Compile Include="Indicators\%40StochasticsFast.cs" />
+    <Compile Include="Indicators\%40SUM.cs" />
+    <Compile Include="Indicators\%40Swing.cs" />
+    <Compile Include="Indicators\%40TMA.cs" />
+    <Compile Include="Indicators\%40TSI.cs" />
+    <Compile Include="Indicators\%40VOL.cs" />
+    <Compile Include="Indicators\%40WilliamsR.cs" />
+    <Compile Include="Indicators\%40WMA.cs" />
+    <Compile Include="Indicators\%40ADL.cs" />
+    <Compile Include="Indicators\%40ADXR.cs" />
+    <Compile Include="Indicators\%40BOP.cs" />
+    <Compile Include="Indicators\%40Range.cs" />
+    <Compile Include="Indicators\%40APZ.cs" />
+    <Compile Include="Indicators\%40ChaikinVolatility.cs" />
+    <Compile Include="Indicators\%40CMO.cs" />
+    <Compile Include="Indicators\%40ConstantLines.cs" />
+    <Compile Include="Indicators\%40DEMA.cs" />
+    <Compile Include="Indicators\%40DM.cs" />
+    <Compile Include="Indicators\%40DoubleStochastics.cs" />
+    <Compile Include="Indicators\%40EaseOfMovement.cs" />
+    <Compile Include="Indicators\%40TSF.cs" />
+    <Compile Include="Indicators\%40DMIndex.cs" />
+    <Compile Include="Indicators\%40FOSC.cs" />
+    <Compile Include="Indicators\%40HMA.cs" />
+    <Compile Include="Indicators\%40KAMA.cs" />
+    <Compile Include="Indicators\%40KeyReversalDown.cs" />
+    <Compile Include="Indicators\%40KeyReversalUp.cs" />
+    <Compile Include="Indicators\%40LinRegIntercept.cs" />
+    <Compile Include="Indicators\%40LinRegSlope.cs" />
+    <Compile Include="Indicators\%40NBarsDown.cs" />
+    <Compile Include="Indicators\%40NBarsUp.cs" />
+    <Compile Include="Indicators\%40TEMA.cs" />
+    <Compile Include="Indicators\%40MAEnvelopes.cs" />
+    <Compile Include="Indicators\%40ParabolicSAR.cs" />
+    <Compile Include="Indicators\%40PFE.cs" />
+    <Compile Include="Indicators\%40PPO.cs" />
+    <Compile Include="Indicators\%40RegressionChannel.cs" />
+    <Compile Include="Indicators\%40RIND.cs" />
+    <Compile Include="Indicators\%40RSquared.cs" />
+    <Compile Include="Indicators\%40RSS.cs" />
+    <Compile Include="Indicators\%40RVI.cs" />
+    <Compile Include="Indicators\%40StdError.cs" />
+    <Compile Include="Indicators\%40StochRSI.cs" />
+    <Compile Include="Indicators\%40T3.cs" />
+    <Compile Include="Indicators\%40TRIX.cs" />
+    <Compile Include="Indicators\%40UltimateOscillator.cs" />
+    <Compile Include="Indicators\%40VMA.cs" />
+    <Compile Include="Indicators\%40VOLMA.cs" />
+    <Compile Include="Indicators\%40VolumeOscillator.cs" />
+    <Compile Include="Indicators\%40VROC.cs" />
+    <Compile Include="Indicators\%40VWMA.cs" />
+    <Compile Include="Indicators\%40ZLEMA.cs" />
+    <Compile Include="Indicators\%40BuySellPressure.cs" />
+    <Compile Include="Indicators\%40ZigZag.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40AskPrice.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40AskSize.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40AverageDailyVolume.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Beta.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40BidAskSpread.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40BidPrice.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40BidSize.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40CalendarYearHigh.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40CalendarYearHighDate.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40CalendarYearLow.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40CalendarYearLowDate.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40CurrentRatio.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DailyHigh.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DailyLow.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DailyVolume.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Description.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DividendAmount.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DividendPayDate.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40DividendYield.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40EarningsPerShare.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40FiveYearsGrowthPercentage.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40High52Weeks.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40High52WeeksDate.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40HistoricalVolatility.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Instrument.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40LastClose.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40LastPrice.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40LastSize.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Low52Weeks.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Low52WeeksDate.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40MarketAnalyzerColumn.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40MarketCap.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40NetChange.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40NextYearsEarningsPerShare.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Notes.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Opening.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40OpenInterest.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40PercentHeldByInstitutions.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40PositionAvgPrice.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40PositionSize.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40PriceEarningsRatio.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40ProfitLoss.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40RealizedProfitLoss.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40RevenuePerShare.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40Settlement.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40SharesOutstanding.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40ShortInterest.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40ShortInterestRatio.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40TimeLastTick.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40TradedContracts.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40UnrealizedProfitLoss.cs" />
+    <Compile Include="MarketAnalyzerColumns\%40VWAP.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgMfe.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgMfeLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgMfeShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgProfit.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgProfitLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxAvgProfitShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxNetProfit.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxNetProfitLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxNetProfitShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxPercentProfitable.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxPercentProfitableLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxPercentProfitableShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProbability.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProbabilityLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProbabilityShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProfitFactor.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProfitFactorLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxProfitFactorShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxR2.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxR2Long.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxR2Short.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSharpeRatio.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSharpeRatioLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSharpeRatioShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSortinoRatio.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSortinoRatioLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxSortinoRatioShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxUlcerRatio.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxUlcerRatioLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxUlcerRatioShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxWinLossRatio.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxWinLossRatioLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MaxWinLossRatioShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinAvgMae.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinAvgMaeLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinAvgMaeShort.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinDrawDown.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinDrawDownLong.cs" />
+    <Compile Include="OptimizationFitnesses\%40MinDrawDownShort.cs" />
+    <Compile Include="Optimizers\%40DefaultOptimizer.cs" />
+    <Compile Include="Optimizers\%40GeneticOptimizer.cs" />
+    <Compile Include="PerformanceMetrics\%40PerformanceMetric.cs" />
+    <Compile Include="PerformanceMetrics\%40SampleCumProfit.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ShareServices\%40Mail.cs" />
+    <Compile Include="ShareServices\%40StockTwits.cs" />
+    <Compile Include="ShareServices\%40TextMessage.cs" />
+    <Compile Include="ShareServices\%40Twitter.cs" />
+    <Compile Include="Strategies\%40SampleAtmStrategy.cs" />
+    <Compile Include="Strategies\%40SampleMACrossOver.cs" />
+    <Compile Include="Strategies\%40SampleMultiInstrument.cs" />
+    <Compile Include="Strategies\%40SampleMultiTimeFrame.cs" />
+    <Compile Include="Strategies\%40Strategy.cs" />
+    <Compile Include="SuperDomColumns\%40APQ.cs" />
+    <Compile Include="SuperDomColumns\%40Notes.cs" />
+    <Compile Include="SuperDomColumns\%40ProfitLoss.cs" />
+    <Compile Include="SuperDomColumns\%40Volume.cs" />
+    <Compile Include="AddOns\MySharedMethodsAddonExample.cs" />
+    <Compile Include="Indicators\MySharedMethodsIndicator.cs" />
+    <Compile Include="Indicators\SampleBoolSeries.cs" />
+    <Compile Include="Indicators\SampleStreamWriter.cs" />
+    <Compile Include="Strategies\AuroraBacktest.cs" />
+    <Compile Include="Strategies\AuroraBacktestUnlocked.cs" />
+    <Compile Include="Strategies\MySharedMethodsStrategy.cs" />
+    <Compile Include="Strategies\SampleBoolSeriesStrategy.cs" />
+    <Compile Include="Strategies\TachEonForceBacktestUnlocked.cs" />
+    <Compile Include="AddOns\DtwAddOns\DtwDraw.cs" />
+    <Compile Include="AddOns\DtwAddOns\DtwUi.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Strategies\Helpers\ChartChecker.cs" />
+    <Compile Include="Strategies\Helpers\StreamWriter.cs" />
+    <Compile Include="BTTFIndicators\TachEonTimeWarpAurora\TachEonTimeWarpAurora.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\Custom.AssemblyInfo.cs" />
+    <Compile Include="BarsTypes\%40DayBarsType.cs" />
+    <Compile Include="BarsTypes\%40HeikenAshiBarsType.cs" />
+    <Compile Include="BarsTypes\%40KagiBarsType.cs" />
+    <Compile Include="BarsTypes\%40LineBreakBarsType.cs" />
+    <Compile Include="BarsTypes\%40MinuteBarsType.cs" />
+    <Compile Include="BarsTypes\%40MonthBarsType.cs" />
+    <Compile Include="BarsTypes\%40PointAndFigureBarsType.cs" />
+    <Compile Include="BarsTypes\%40RangeBarsType.cs" />
+    <Compile Include="BarsTypes\%40RenkoBarsType.cs" />
+    <Compile Include="BarsTypes\%40SecondBarsType.cs" />
+    <Compile Include="BarsTypes\%40TickBarsType.cs" />
+    <Compile Include="BarsTypes\%40VolumeBarsType.cs" />
+    <Compile Include="BarsTypes\%40WeekBarsType.cs" />
+    <Compile Include="BarsTypes\%40YearsBarsType.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.ru-RU.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.fr-FR.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.de-DE.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.pt-PT.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.es-ES.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.zh-Hans.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.it-IT.resx">
+      <CustomToolNamespace>NinjaTrader.Custom</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

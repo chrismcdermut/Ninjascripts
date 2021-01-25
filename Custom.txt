@@ -1,0 +1,21 @@
+<!-- <Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- <EnableDefaultCompileItems>False</EnableDefaultCompileItems> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.MSBuild" Version="6.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- <Compile Include="Indicators/@UltimateOscillator.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile> -->
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\StyleCop\v4.6\StyleCop.targets" Condition="Exists('$(MSBuildExtensionsPath)\StyleCop\v4.6\StyleCop.targets')" />
+
+  
+
+</Project> -->

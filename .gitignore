@@ -11,6 +11,7 @@ NinjaTrader.Custom.dll
 Resource.Designer.cs
 ResourceEnumConverter.cs
 Resource.resx
+Resource.*.resx
 Resource.de*
 Resource.es*
 Resource.ru-RU*
